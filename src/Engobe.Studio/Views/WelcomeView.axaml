@@ -1,0 +1,104 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Engobe.Studio.ViewModels"
+             xmlns:local="using:Engobe.Studio"
+             x:Class="Engobe.Studio.Views.WelcomeView"
+             x:DataType="vm:ShellViewModel">
+
+    <UserControl.Styles>
+        <Style Selector="Button.recent-item">
+            <Setter Property="Background" Value="{StaticResource EngobeSurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource EngobeBorderBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="{StaticResource CornerRadiusControl}" />
+            <Setter Property="Padding" Value="12,10" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+        </Style>
+        <Style Selector="Button.recent-item:pointerover">
+            <Setter Property="Background" Value="{StaticResource EngobeSurfaceAltBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource EngobePrimaryMutedBrush}" />
+        </Style>
+    </UserControl.Styles>
+
+    <Grid VerticalAlignment="Center"
+          HorizontalAlignment="Center">
+        <StackPanel MaxWidth="520"
+                    Margin="24"
+                    Spacing="24">
+
+            <!-- Hero: branding + ember accent glyph -->
+            <Border Background="{StaticResource EngobeSurfaceBrush}"
+                    CornerRadius="{StaticResource CornerRadiusCard}"
+                    Padding="32,28">
+                <Grid ColumnDefinitions="Auto,*">
+                    <!-- Ember flame glyph (vector, no emoji) -->
+                    <Path Grid.Column="0"
+                          Width="32" Height="40"
+                          Stretch="Uniform"
+                          Fill="{StaticResource EngobePrimaryBrush}"
+                          Data="M 12,0 C 16,4 24,12 24,20 C 24,26 18,32 12,32 C 6,32 0,26 0,20 C 0,12 4,4 8,2 C 8,8 12,12 14,10 C 14,6 10,2 12,0 Z"
+                          Margin="0,0,20,0"
+                          VerticalAlignment="Center" />
+                    <!-- Brand copy -->
+                    <StackPanel Grid.Column="1"
+                                VerticalAlignment="Center"
+                                Spacing="4">
+                        <TextBlock Text="Engobe Studio"
+                                   FontSize="{StaticResource FontSizeH}"
+                                   FontWeight="SemiBold" />
+                        <TextBlock Text="A static site builder — dark, warm, focused."
+                                   Classes="muted" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- Primary actions -->
+            <StackPanel Orientation="Horizontal"
+                        Spacing="8">
+                <Button Content="New Site"
+                        Command="{Binding NewSiteCommand}"
+                        Classes="primary"
+                        MinWidth="120" />
+                <Button Content="Open Site"
+                        Command="{Binding OpenProjectCommand}"
+                        Classes="secondary" />
+            </StackPanel>
+
+            <!-- Recent projects section -->
+            <StackPanel Spacing="8">
+                <TextBlock Text="Recent Projects"
+                           Classes="section-header" />
+
+                <!-- Empty state -->
+                <TextBlock Text="No recent projects — create your first site"
+                           Classes="muted"
+                           HorizontalAlignment="Center"
+                           Margin="0,8"
+                           IsVisible="{Binding RecentProjects.Count,
+                               Converter={x:Static local:AppConverters.IsCountZero}}" />
+
+                <!-- Project cards -->
+                <ItemsControl ItemsSource="{Binding RecentProjects}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="vm:RecentProjectViewModel">
+                            <Button Command="{Binding OpenCommand}"
+                                    Classes="recent-item"
+                                    Margin="0,2">
+                                <StackPanel Spacing="2">
+                                    <TextBlock Text="{Binding Name}"
+                                               FontWeight="SemiBold" />
+                                    <TextBlock Text="{Binding Path}"
+                                               Classes="muted"
+                                               TextTrimming="CharacterEllipsis" />
+                                </StackPanel>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+
+</UserControl>

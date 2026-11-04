@@ -15,12 +15,12 @@
 ## 4. Add tests
 - [ ] 4.1 Add tests for deployment loading, saving, variant actions, logs, and saved results.
 - [ ] 4.2 Limit SettingsViewModel tests to site settings.
-- [ ] 4.3 Optionally add a UI test for the variant, saving, and `.kiln/deploy.json`.
+- [ ] 4.3 Optionally add a UI test for the variant, saving, and `.engobe/deploy.json`.
 
 ## 5. Validate in the target repository
 - [ ] 5.1 Run `rtk dotnet build` with 0 warnings and 0 errors.
 - [ ] 5.2 Run the full `dotnet test` suite without `rtk`; all tests must pass.
-- [ ] 5.3 Run `jb inspectcode KilnStudio.slnx -e=WARNING -f=Text` with 0 findings.
+- [ ] 5.3 Run `jb inspectcode EngobeStudio.slnx -e=WARNING -f=Text` with 0 findings.
 - [ ] 5.4 Search for the six old `IsXTargetSelected` names in `src/`; no matches may remain.
 - [ ] 5.5 Manually test file system publishing with logs and results after restart, and test CI configuration.
 - [ ] 5.6 Manually verify that all six navigation destinations show the correct views.

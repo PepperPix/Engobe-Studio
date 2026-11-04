@@ -13,24 +13,24 @@ resharper_redundant_using_directive_highlighting = suggestion
 dotnet_diagnostic.S109.severity = none
 
 # Avalonia framework classes inherit deep framework hierarchies by design.
-[src/Kiln.Studio/{Views,Controls}/*.axaml.cs]
+[src/Engobe.Studio/{Views,Controls}/*.axaml.cs]
 dotnet_diagnostic.CA1501.severity = none
 dotnet_diagnostic.VSTHRD100.severity = none
 
 # Avalonia XAML code-behind types require partial for generated companion types.
-[src/Kiln.Studio/App.axaml.cs]
+[src/Engobe.Studio/App.axaml.cs]
 dotnet_diagnostic.S2333.severity = none
 resharper_partial_type_with_single_part_highlighting = none
 
 # XAML resource names deliberately follow the project-wide XS/SM/MD/LG/XL size-scale convention
 # (SpacingXS, FontSizeXL, ...) used throughout Tokens.axaml/Controls.axaml — renaming to Xs/Xl per
 # ReSharper's default XAML naming rule would break consistency with the rest of the scale.
-[src/Kiln.Studio/Styles/Tokens.axaml]
+[src/Engobe.Studio/Styles/Tokens.axaml]
 resharper_inconsistent_naming_highlighting = none
 
 # Public DTOs are populated via mapping/deserialization and consumed by templates or future UI;
-# not every accessor is read directly by current code (mirrors Kiln's Models/*.cs rationale).
-[src/Kiln.Studio.Services/Dto/*.cs]
+# not every accessor is read directly by current code (mirrors Engobe's Models/*.cs rationale).
+[src/Engobe.Studio.Services/Dto/*.cs]
 dotnet_diagnostic.CA1054.severity = none
 dotnet_diagnostic.CA1056.severity = none
 dotnet_diagnostic.S3996.severity = none
@@ -39,42 +39,42 @@ resharper_not_accessed_positional_property_global_highlighting = none
 
 # Uri-like strings in persisted settings/menu schemas are serialized/user-authored values, not
 # navigable System.Uri APIs.
-[src/Kiln.Studio.Services/SiteSettings.cs]
+[src/Engobe.Studio.Services/SiteSettings.cs]
 dotnet_diagnostic.CA1054.severity = none
 dotnet_diagnostic.CA1056.severity = none
 dotnet_diagnostic.S3996.severity = none
 
-[src/Kiln.Studio.Services/IMenuService.cs]
+[src/Engobe.Studio.Services/IMenuService.cs]
 dotnet_diagnostic.CA1054.severity = none
 dotnet_diagnostic.CA1056.severity = none
 dotnet_diagnostic.S3996.severity = none
 
-[src/Kiln.Studio.Services/MenuItemDefinition.cs]
+[src/Engobe.Studio.Services/MenuItemDefinition.cs]
 dotnet_diagnostic.CA1054.severity = none
 dotnet_diagnostic.CA1056.severity = none
 dotnet_diagnostic.S3996.severity = none
 
 # Same rationale as Dto/*.cs — positional records populated via mapping, some members only used
 # via Equals/ToString today.
-[src/Kiln.Studio.Services/{ContentDocument,RecentProject}.cs]
+[src/Engobe.Studio.Services/{ContentDocument,RecentProject}.cs]
 resharper_not_accessed_positional_property_global_highlighting = none
 
 # CommunityToolkit.Mvvm's [ObservableProperty] generates partial On<Prop>Changed(T value) hooks;
 # implementations that only trigger side effects (e.g. OnPropertyChanged(nameof(...)) for a
 # dependent computed property) legitimately don't reference the `value` parameter.
-[src/Kiln.Studio.ViewModels/*.cs]
+[src/Engobe.Studio.ViewModels/*.cs]
 resharper_unused_parameter_in_partial_method_highlighting = none
 
 # Date is populated from ContentEntry for future/consistency purposes (mirrors Dto rationale above);
 # not yet consumed by a view.
-[src/Kiln.Studio.ViewModels/ContentEntryViewModel.cs]
+[src/Engobe.Studio.ViewModels/ContentEntryViewModel.cs]
 resharper_unused_auto_property_accessor_global_highlighting = none
 
 # AssetBrowserViewModel exposes optional host callbacks (e.g. Replaced) that are part of the public
 # API but not yet consumed by any host; the accessors are kept for future/documented use.
-[src/Kiln.Studio.ViewModels/AssetBrowserViewModel.cs]
+[src/Engobe.Studio.ViewModels/AssetBrowserViewModel.cs]
 resharper_unused_auto_property_accessor_global_highlighting = none
 
 # Test doubles expose "LastXxx" spy properties consumed only by some call sites/tests.
-[tests/Kiln.Studio.TestSupport/TestDoubles/*.cs]
+[tests/Engobe.Studio.TestSupport/TestDoubles/*.cs]
 resharper_unused_auto_property_accessor_global_highlighting = none

@@ -5,10 +5,10 @@
 - [ ] 1.4 Document the local unsigned `.app` workflow and expected Gatekeeper notice in `README.md`.
 
 ## 2. Validate in the target repository
-- [ ] 2.1 Run `bash scripts/package-macos-app.sh` and create `dist/Kiln Studio.app`.
-- [ ] 2.2 Successfully run `plutil -lint "dist/Kiln Studio.app/Contents/Info.plist"`.
+- [ ] 2.1 Run `bash scripts/package-macos-app.sh` and create `dist/Engobe Studio.app`.
+- [ ] 2.2 Successfully run `plutil -lint "dist/Engobe Studio.app/Contents/Info.plist"`.
 - [ ] 2.3 Run `rtk dotnet build` with 0 warnings and 0 errors.
 - [ ] 2.4 Run the full `dotnet test` suite without `rtk`; all tests must pass.
-- [ ] 2.5 Run `jb inspectcode KilnStudio.slnx -e=WARNING -f=Text` with 0 findings.
-- [ ] 2.6 On macOS, launch the bundle with `open "dist/Kiln Studio.app"` and verify the menu bar name is "Kiln Studio".
+- [ ] 2.5 Run `jb inspectcode EngobeStudio.slnx -e=WARNING -f=Text` with 0 findings.
+- [ ] 2.6 On macOS, launch the bundle with `open "dist/Engobe Studio.app"` and verify the menu bar name is "Engobe Studio".
 - [ ] 2.7 Check `rtk git status --short` and `rtk git show --stat HEAD`; do not change `.github/workflows/`.

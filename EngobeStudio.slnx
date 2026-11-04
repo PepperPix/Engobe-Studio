@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Engobe.Studio/Engobe.Studio.csproj" />
+    <Project Path="src/Engobe.Studio.ViewModels/Engobe.Studio.ViewModels.csproj" />
+    <Project Path="src/Engobe.Studio.Services/Engobe.Studio.Services.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Engobe.Studio.TestSupport/Engobe.Studio.TestSupport.csproj" />
+    <Project Path="tests/Engobe.Studio.Tests/Engobe.Studio.Tests.csproj" />
+    <Project Path="tests/Engobe.Studio.UiTests/Engobe.Studio.UiTests.csproj" />
+  </Folder>
+</Solution>

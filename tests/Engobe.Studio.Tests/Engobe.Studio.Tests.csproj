@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <StaticAnalysisCodeType>Test</StaticAnalysisCodeType>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnableMSTestRunner>true</EnableMSTestRunner>
+    <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="TUnit" Version="1.75.0" />
+    <PackageReference Update="Microsoft.Extensions.StaticAnalysis" Version="10.11.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Engobe.Studio.TestSupport\Engobe.Studio.TestSupport.csproj" />
+    <ProjectReference Include="..\..\src\Engobe.Studio.ViewModels\Engobe.Studio.ViewModels.csproj" />
+    <ProjectReference Include="..\..\src\Engobe.Studio.Services\Engobe.Studio.Services.csproj" />
+  </ItemGroup>
+
+</Project>

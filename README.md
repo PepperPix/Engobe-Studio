@@ -1,15 +1,16 @@
-# Kiln Studio
+# Engobe Studio
 
-A cross-platform desktop CMS for static websites — powered by [Kiln](https://github.com/PepperPix/Kiln).
+A cross-platform desktop CMS for static websites — powered by [Engobe](https://github.com/PepperPix/Engobe).
 
 ## Status
 
-**Early development** — Solution skeleton (v0.1.0). No feature logic yet.
+**Early development** — Product behavior and package availability are evolving;
+Studio follows its own version line, independent of the Engobe engine.
 
-## What is Kiln Studio?
+## What is Engobe Studio?
 
-Kiln Studio is a desktop application for creating and managing static websites. It provides a visual
-interface for content editing, theme configuration, and one-click deployment — powered by the Kiln
+Engobe Studio is a desktop application for creating and managing static websites. It provides a visual
+interface for content editing, theme configuration, and one-click deployment — powered by the Engobe
 static site generator engine.
 
 ### Planned Features
@@ -25,11 +26,11 @@ static site generator engine.
 
 ```
 src/
-  Kiln.Studio/             — Avalonia App (UI, DI host, Views)
-  Kiln.Studio.ViewModels/  — ViewModels (UI-free, CommunityToolkit.Mvvm)
-  Kiln.Studio.Services/    — Studio services (EngineHost, ProjectSession)
+  Engobe.Studio/             — Avalonia App (UI, DI host, Views)
+  Engobe.Studio.ViewModels/  — ViewModels (UI-free, CommunityToolkit.Mvvm)
+  Engobe.Studio.Services/    — Studio services (EngineHost, ProjectSession)
 tests/
-  Kiln.Studio.Tests/       — TUnit tests
+  Engobe.Studio.Tests/       — TUnit tests
 ```
 
 ### Conventions
@@ -39,23 +40,13 @@ encapsulation aid.
 
 ## Installation
 
-### For developers with the .NET SDK
+`PepperPix.Engobe.Studio` has not been published yet. Do not install or update it
+from NuGet until a public Studio version is announced. For local integration,
+use the isolated local-feed procedure in [UPGRADING.md](UPGRADING.md#replace-the-tool).
+Studio and the engine have independent versions.
 
-Install Kiln Studio as a global tool:
-
-```bash
-dotnet tool install --global PepperPix.Kiln.Studio
-kiln-studio
-```
-
-Update:
-
-```bash
-dotnet tool update --global PepperPix.Kiln.Studio
-```
-
-> Note: `dotnet tool` does not provide OS integration (Dock, Start menu, `.app` bundle).
-> For end-user installation, use Homebrew Cask or winget.
+Native installers and OS integration (Dock, Start menu, `.app` bundle) are
+outside this rebrand.
 
 ## Building
 
@@ -92,7 +83,7 @@ not work with TUnit.
 ### Running the app
 
 ```bash
-dotnet run --project src/Kiln.Studio
+dotnet run --project src/Engobe.Studio
 ```
 
 ### Commit tooling
@@ -105,7 +96,7 @@ Husky installs a `commit-msg` hook enforcing [Conventional Commits](https://www.
 
 ## Related Projects
 
-- **[Kiln](https://github.com/PepperPix/Kiln)** — The static site generator engine and CLI tool
+- **[Engobe](https://github.com/PepperPix/Engobe)** — The static site generator engine and CLI tool
 
 ## License
 

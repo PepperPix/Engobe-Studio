@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <StaticAnalysisCodeType>Test</StaticAnalysisCodeType>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnableMSTestRunner>true</EnableMSTestRunner>
+    <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="TUnit" Version="1.75.0" />
+    <PackageReference Include="Avalonia.Headless" Version="12.1.5" />
+    <PackageReference Include="Avalonia.Skia" Version="12.1.5" />
+    <PackageReference Include="jcamp.Avalonia.Headless.TUnit" Version="0.1.1" />
+    <PackageReference Include="Microsoft.Testing.Extensions.HangDump" Version="2.5.2" />
+    <PackageReference Update="Microsoft.Extensions.StaticAnalysis" Version="10.11.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Engobe.Studio\Engobe.Studio.csproj" />
+    <ProjectReference Include="..\Engobe.Studio.TestSupport\Engobe.Studio.TestSupport.csproj" />
+  </ItemGroup>
+
+</Project>

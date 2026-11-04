@@ -1,5 +1,5 @@
 ## Context
-This change moves the existing deployment variant and publishing workflow from Settings and shell commands to a dedicated navigation destination. Configuration remains local to the project in `.kiln/deploy.json`.
+This change moves the existing deployment variant and publishing workflow from Settings and shell commands to a dedicated navigation destination. Configuration remains local to the project in `.engobe/deploy.json`.
 
 ## Decisions
 - Add an optional latest result to `DeploymentConfig`, including a timestamp, success state, summary, and details. A missing JSON field remains `null` so existing files continue to load.

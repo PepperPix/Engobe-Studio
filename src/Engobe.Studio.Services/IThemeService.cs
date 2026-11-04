@@ -1,0 +1,20 @@
+namespace Engobe.Studio.Services;
+
+public interface IThemeService
+{
+    IReadOnlyList<string> ListThemes(string projectPath);
+
+    string GetCurrentTheme(string projectPath);
+
+    void SetCurrentTheme(string projectPath, string themeName);
+
+    void DuplicateTheme(string projectPath, string sourceThemeName, string newThemeName);
+
+    string InstallThemeFromZip(string projectPath, string zipFilePath);
+
+    IReadOnlyList<ThemeFileEntry> ListThemeFiles(string projectPath, string themeName);
+
+    string ReadThemeFile(string projectPath, string themeName, string relativePath);
+
+    string GetThemeFilePath(string projectPath, string themeName, string relativePath);
+}
