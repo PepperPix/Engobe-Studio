@@ -1,4 +1,4 @@
-Kiln Studio — A desktop content management system for Kiln.
+Engobe Studio — A desktop content management system for Engobe.
 Copyright 2026 Marcel Kummerow
 
 Licensed under the GNU Affero General Public License, Version 3.0 (the "License");
@@ -17,7 +17,7 @@ limitations under the License.
 
 This product includes third-party software with the following licenses:
 
-JetBrains Mono (src/Kiln.Studio/Assets/Fonts/JetBrainsMono/JetBrainsMono-Light.ttf)
+JetBrains Mono (src/Engobe.Studio/Assets/Fonts/JetBrainsMono/JetBrainsMono-Light.ttf)
   License: SIL Open Font License, Version 1.1
   Copyright 2020 The JetBrains Mono Project Authors (https://github.com/JetBrains/JetBrainsMono)
-  Full license text: src/Kiln.Studio/Assets/Fonts/JetBrainsMono/OFL.txt
+  Full license text: src/Engobe.Studio/Assets/Fonts/JetBrainsMono/OFL.txt

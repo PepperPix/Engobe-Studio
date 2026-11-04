@@ -1,10 +1,10 @@
 schema: spec-driven
 
 context: |
-  Kiln Studio is a desktop content management application for Kiln sites.
-  It uses the Kiln engine in-process and treats the project file system as the
+  Engobe Studio is a desktop content management application for Engobe sites.
+  It uses the Engobe engine in-process and treats the project file system as the
   source of truth for site configuration, content, themes, and assets.
-  OpenSpec artifacts in this repository describe Kiln Studio only. This
+  OpenSpec artifacts in this repository describe Engobe Studio only. This
   repository is the planning and implementation root for its changes.
   Write all artifacts in simple, formal technical English. Preserve API names,
   paths, command-line options, configuration keys, and other technical

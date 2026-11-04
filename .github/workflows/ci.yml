@@ -21,7 +21,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     # Safety net for hung runs (a headless UI test has previously stuck the macos-latest job for
     # ~2h instead of the usual ~1-3 min) — TUnit's own per-test DefaultTestTimeout (see
-    # GlobalTestSetup.cs in Kiln.Studio.Tests/Kiln.Studio.UiTests) should already fail a hanging
+    # GlobalTestSetup.cs in Engobe.Studio.Tests/Engobe.Studio.UiTests) should already fail a hanging
     # test fast, but this bounds the whole job in case that doesn't fire (e.g. a hang outside test
     # execution, like restore/build, or the whole Avalonia dispatch loop wedging before any test
     # timeout can even be evaluated).
@@ -56,7 +56,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: snapshots-${{ matrix.os }}
-          path: tests/Kiln.Studio.UiTests/Snapshots/
+          path: tests/Engobe.Studio.UiTests/Snapshots/
           if-no-files-found: ignore
 
   inspectcode:
@@ -80,6 +80,6 @@ jobs:
       - name: InspectCode
         run: |
           dotnet tool install -g JetBrains.ReSharper.GlobalTools
-          jb inspectcode KilnStudio.slnx -e=WARNING -f=Text -o=inspect.txt
+          jb inspectcode EngobeStudio.slnx -e=WARNING -f=Text -o=inspect.txt
           cat inspect.txt
 

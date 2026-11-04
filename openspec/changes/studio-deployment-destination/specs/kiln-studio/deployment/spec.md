@@ -18,11 +18,11 @@ Studio MUST display log lines during a deployment action and persist the latest 
 
 #### Scenario: A deployment action is complete
 - **WHEN** the action completes successfully or with an error
-- **THEN** Studio displays the result and log lines and saves the latest result in `.kiln/deploy.json`.
+- **THEN** Studio displays the result and log lines and saves the latest result in `.engobe/deploy.json`.
 
 ### Requirement: Existing deployment configuration remains readable
-Studio MUST load existing `.kiln/deploy.json` files that do not contain a result field.
+Studio MUST load existing `.engobe/deploy.json` files that do not contain a result field.
 
 #### Scenario: A file from an older version is loaded
-- **WHEN** `.kiln/deploy.json` does not contain a saved latest result
+- **WHEN** `.engobe/deploy.json` does not contain a saved latest result
 - **THEN** Studio loads the deployment options with an empty result.

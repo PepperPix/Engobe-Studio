@@ -1,0 +1,19 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Engobe.Studio.Controls.TaxonomyChipInput">
+
+    <StackPanel Spacing="{StaticResource SpacingXS}">
+
+        <TextBlock x:Name="LabelText" Classes="section-header" />
+
+        <!--
+            Chips and the input box are direct children of a single WrapPanel so they flow
+            together on the same line(s) — the input always appears right after the last chip,
+            wrapping onto a new line together with the chips instead of sitting in its own row
+            below (see PLAN-060-Nachfolge-ADR discussion, 2026-07-09).
+        -->
+        <WrapPanel x:Name="ChipsAndInputPanel" />
+
+    </StackPanel>
+
+</UserControl>

@@ -19,7 +19,7 @@ Studio MUST show build progress and the success or failure result in the status 
 - **THEN** Studio shows the result or error message and clears the busy state.
 
 ### Requirement: Full preview opens the system browser
-Studio MUST be able to start the Kiln development server for the active project and open its URL in the system browser.
+Studio MUST be able to start the Engobe development server for the active project and open its URL in the system browser.
 
 #### Scenario: Preview is started
 - **WHEN** the user starts full preview

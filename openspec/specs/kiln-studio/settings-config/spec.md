@@ -26,11 +26,11 @@ Studio MUST preserve site configuration values outside the managed basic fields 
 - **THEN** other site configuration entries such as collections, menus, and taxonomies remain intact.
 
 ### Requirement: Settings also manage deployment configuration
-Studio MUST allow the deployment variant and its file system options to be edited in Site Settings and saved to `.kiln/deploy.json`.
+Studio MUST allow the deployment variant and its file system options to be edited in Site Settings and saved to `.engobe/deploy.json`.
 
 #### Scenario: Deployment configuration is saved in Settings
 - **WHEN** the user changes a deployment variant or file system path in Settings and saves
-- **THEN** Studio reads or writes these values in `.kiln/deploy.json`.
+- **THEN** Studio reads or writes these values in `.engobe/deploy.json`.
 
 ### Requirement: Settings report invalid language input
 Studio MUST show a notice when the entered language code is invalid and report the save status.

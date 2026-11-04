@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <StaticAnalysisCodeType>ProdLib</StaticAnalysisCodeType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Engobe.Abstractions" Version="2.0.0" />
+    <PackageReference Include="Engobe.Core" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.13" />
+    <!-- Match Engobe.Core's managed Skia milestone in every consuming application and test output. -->
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="4.151.1" />
+    <!-- Override the vulnerable transitive version from Engobe.Core -> NuGet.Packaging. -->
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.13" />
+    <PackageReference Include="YamlDotNet" Version="18.1.0" />
+    <PackageReference Update="Microsoft.Extensions.StaticAnalysis" Version="10.11.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

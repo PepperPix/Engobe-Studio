@@ -1,0 +1,159 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Engobe.Studio.ViewModels"
+        xmlns:views="using:Engobe.Studio.Views"
+        x:Class="Engobe.Studio.Views.ShellWindow"
+        x:DataType="vm:ShellViewModel"
+        Title="{Binding Title}"
+        Width="1200"
+        Height="800"
+        Icon="/Assets/engobe-studio.ico">
+
+    <DockPanel>
+
+        <!-- Slim project header strip (ADR-054/PLAN-072): the old wide multi-group toolbar is
+             gone — per-content actions (New/Save/Preview) moved into their own nav destinations
+             (Content list / Editor header). Only truly global, cross-cutting actions with no
+             single nav-target home remain here: project switcher, folder/refresh, and Build
+             (site-wide artifact generation, distinct from the "Deploy group", which retires into
+             the placeholder Deployment nav entry this iteration — see ADR-054 "Umfang dieser
+             Iteration"). -->
+        <Border DockPanel.Dock="Top" Classes="toolbar-host"
+                IsVisible="{Binding IsProjectOpen}">
+            <StackPanel Orientation="Horizontal" Spacing="4">
+
+                <!-- Project Switcher group -->
+                <Button Classes="secondary"
+                        Padding="8,6">
+                    <Button.Flyout>
+                        <Flyout Placement="BottomEdgeAlignedLeft">
+                            <StackPanel Spacing="0" MinWidth="220">
+                                <!-- Recent projects -->
+                                <ItemsControl ItemsSource="{Binding RecentProjects}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate x:DataType="vm:RecentProjectViewModel">
+                                            <Button Content="{Binding Name}"
+                                                    Command="{Binding $parent[Window].((vm:ShellViewModel)DataContext).SwitchRecentCommand}"
+                                                    CommandParameter="{Binding Path}"
+                                                    Classes="quiet"
+                                                    HorizontalAlignment="Stretch"
+                                                    HorizontalContentAlignment="Left"
+                                                    Padding="8,6" />
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                                <Separator Margin="0,4" />
+                                <Button Content="Open…"
+                                        Command="{Binding $parent[Window].((vm:ShellViewModel)DataContext).OpenProjectCommand}"
+                                        Classes="quiet"
+                                        HorizontalAlignment="Stretch"
+                                        HorizontalContentAlignment="Left"
+                                        Padding="8,6" />
+                                <Button Content="New Site…"
+                                        Command="{Binding $parent[Window].((vm:ShellViewModel)DataContext).NewSiteCommand}"
+                                        Classes="quiet"
+                                        HorizontalAlignment="Stretch"
+                                        HorizontalContentAlignment="Left"
+                                        Padding="8,6" />
+                            </StackPanel>
+                        </Flyout>
+                    </Button.Flyout>
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <TextBlock Text="{Binding CurrentProjectName}"
+                                   VerticalAlignment="Center"
+                                   FontWeight="SemiBold" />
+                        <TextBlock Text="▾"
+                                   VerticalAlignment="Center"
+                                   Foreground="{StaticResource EngobeTextMutedBrush}" />
+                    </StackPanel>
+                </Button>
+
+                <Button Content="Close"
+                        Command="{Binding CloseProjectCommand}"
+                        Classes="quiet" />
+
+                <!-- Separator -->
+                <Border Width="1"
+                        Background="{StaticResource EngobeBorderBrush}"
+                        Margin="4,4" />
+
+                <Button Content="Open Folder"
+                    Command="{Binding OpenInFileManagerCommand}"
+                    Classes="secondary" />
+                <Button Content="Refresh"
+                    Command="{Binding RefreshCommand}"
+                    Classes="secondary" />
+
+                <!-- Separator -->
+                <Border Width="1"
+                        Background="{StaticResource EngobeBorderBrush}"
+                        Margin="4,4" />
+
+                <!-- Build group — primary action -->
+                <Button Content="Build"
+                        Command="{Binding BuildCommand}"
+                        Classes="primary" />
+                <CheckBox Content="Release"
+                          IsChecked="{Binding ReleaseBuild}"
+                          VerticalAlignment="Center"
+                          Margin="4,0" />
+
+            </StackPanel>
+        </Border>
+
+        <!-- Status bar -->
+        <Border DockPanel.Dock="Bottom" Classes="status-host">
+            <DockPanel>
+                <ProgressBar DockPanel.Dock="Right"
+                             Classes="busy-indicator"
+                             IsIndeterminate="True"
+                             IsVisible="{Binding IsBusy}" />
+                <TextBlock Text="{Binding StatusMessage}"
+                           Classes="status-text"
+                           TextTrimming="CharacterEllipsis" />
+            </DockPanel>
+        </Border>
+
+        <Grid>
+            <!-- Welcome view (no project open) -->
+            <views:WelcomeView IsVisible="{Binding !IsProjectOpen}" />
+
+            <!-- Nav rail + content area (project open) -->
+            <Grid IsVisible="{Binding IsProjectOpen}" ColumnDefinitions="Auto,*">
+
+                <views:NavRailView Grid.Column="0" DataContext="{Binding NavRail}" />
+
+                <Grid Grid.Column="1">
+
+                    <!-- Content: full-screen list, or the two/three-column editor once an item is open -->
+                    <Grid IsVisible="{Binding IsContentTargetSelected}">
+                        <Grid IsVisible="{Binding !IsEditingContent}">
+                            <views:ContentListView DataContext="{Binding Explorer}" />
+                        </Grid>
+                        <Grid IsVisible="{Binding IsEditingContent}">
+                            <views:EditorView DataContext="{Binding Editor}" />
+                        </Grid>
+                    </Grid>
+
+                    <!-- Placeholder nav destinations (ADR-054 "Umfang dieser Iteration"): Menus/
+                         Theme/Deployment follow later. Assets is provided by PLAN-073. -->
+                    <views:AssetManagerView DataContext="{Binding AssetManager}"
+                                            IsVisible="{Binding $parent[Window].((vm:ShellViewModel)DataContext).IsAssetsTargetSelected}" />
+                    <views:MenuEditorView DataContext="{Binding MenuEditor}"
+                                          IsVisible="{Binding $parent[Window].((vm:ShellViewModel)DataContext).IsMenusTargetSelected}" />
+                    <views:ThemeManagerView DataContext="{Binding ThemeManager}"
+                                            IsVisible="{Binding $parent[Window].((vm:ShellViewModel)DataContext).IsThemeTargetSelected}" />
+                    <views:PlaceholderView Header="Deployment" IsVisible="{Binding IsDeploymentTargetSelected}" />
+
+                    <!-- Settings: real nav destination, replaces the former modal SettingsWindow (amends ADR-027) -->
+                    <Grid IsVisible="{Binding IsSettingsTargetSelected}">
+                        <views:SettingsView DataContext="{Binding Settings}" />
+                    </Grid>
+
+                </Grid>
+            </Grid>
+        </Grid>
+
+    </DockPanel>
+
+</Window>

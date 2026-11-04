@@ -1,8 +1,8 @@
 {
-	"name": "kiln-studio-release",
+	"name": "engobe-studio-release",
 	"version": "0.0.0-development",
 	"private": true,
-	"description": "Release tooling for Kiln Studio.",
+	"description": "Release tooling for Engobe Studio.",
 	"scripts": {
 		"prepare": "husky"
 	},
@@ -76,7 +76,7 @@
 		],
 		"includeSymbols": true,
 		"projectPath": [
-			"src/Kiln.Studio/Kiln.Studio.csproj"
+			"src/Engobe.Studio/Engobe.Studio.csproj"
 		],
 		"npmPublish": false,
 		"usePackageVersion": true

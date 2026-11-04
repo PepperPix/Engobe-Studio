@@ -1,17 +1,17 @@
 ## ADDED Requirements
 ### Requirement: Local packaging creates a macOS application bundle
-The packaging script MUST create a self-contained `Kiln Studio.app` for `osx-arm64` and `osx-x64` with `Contents/MacOS`, `Contents/Resources`, and `Contents/Info.plist`.
+The packaging script MUST create a self-contained `Engobe Studio.app` for `osx-arm64` and `osx-x64` with `Contents/MacOS`, `Contents/Resources`, and `Contents/Info.plist`.
 
 #### Scenario: Default macOS packaging
 - **WHEN** the packaging script runs on macOS without a RID
-- **THEN** it creates a launchable `dist/Kiln Studio.app` for `osx-arm64` by default.
+- **THEN** it creates a launchable `dist/Engobe Studio.app` for `osx-arm64` by default.
 
 ### Requirement: The bundle identity names the application
-The bundle MUST set `CFBundleName` and `CFBundleDisplayName` to "Kiln Studio", set the intended `CFBundleIdentifier`, and use the version from project metadata.
+The bundle MUST set `CFBundleName` and `CFBundleDisplayName` to "Engobe Studio", set the intended `CFBundleIdentifier`, and use the version from project metadata.
 
 #### Scenario: Bundle metadata is checked
 - **WHEN** the generated `Info.plist` is read
-- **THEN** it contains the visible name "Kiln Studio", an executable value matching the publish output, and the project version.
+- **THEN** it contains the visible name "Engobe Studio", an executable value matching the publish output, and the project version.
 
 ### Requirement: Icon generation is best effort
 The packaging script MUST convert existing PNG icons to `.icns` when possible and MUST create the bundle even when `sips` or `iconutil` is unavailable.
